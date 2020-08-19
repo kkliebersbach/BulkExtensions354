@@ -2,64 +2,70 @@
 using BulkExtensionsIssue354;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BulkExtensionsIssue354.Migrations
 {
     [DbContext(typeof(DbContext))]
-    [Migration("20200819043001_InitialCreate")]
+    [Migration("20200819060907_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.7");
+                .HasAnnotation("ProductVersion", "3.1.7")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("BulkExtensionsIssue354.Model.EntityA", b =>
+            modelBuilder.Entity("BulkExtensionsIssue354.Models.EntityA", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("EntityAs");
                 });
 
-            modelBuilder.Entity("BulkExtensionsIssue354.Model.EntityB", b =>
+            modelBuilder.Entity("BulkExtensionsIssue354.Models.EntityB", b =>
                 {
                     b.Property<int>("EntityAId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<int>("Id")
-                        .HasColumnType("INTEGER");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Type")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("EntityAId", "Id");
 
                     b.ToTable("EntityBs");
                 });
 
-            modelBuilder.Entity("BulkExtensionsIssue354.Model.EntityC", b =>
+            modelBuilder.Entity("BulkExtensionsIssue354.Models.EntityC", b =>
                 {
                     b.Property<int>("EntityAId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<int>("EntityBId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<int>("Id")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<int>("Value")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.HasKey("EntityAId", "EntityBId", "Id");
 
@@ -68,42 +74,43 @@ namespace BulkExtensionsIssue354.Migrations
                     b.ToTable("EntityCs");
                 });
 
-            modelBuilder.Entity("BulkExtensionsIssue354.Model.IdC", b =>
+            modelBuilder.Entity("BulkExtensionsIssue354.Models.IdC", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Name")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("IdCs");
                 });
 
-            modelBuilder.Entity("BulkExtensionsIssue354.Model.EntityB", b =>
+            modelBuilder.Entity("BulkExtensionsIssue354.Models.EntityB", b =>
                 {
-                    b.HasOne("BulkExtensionsIssue354.Model.EntityA", "EntityA")
+                    b.HasOne("BulkExtensionsIssue354.Models.EntityA", "EntityA")
                         .WithMany("EntityBs")
                         .HasForeignKey("EntityAId")
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("BulkExtensionsIssue354.Model.EntityC", b =>
+            modelBuilder.Entity("BulkExtensionsIssue354.Models.EntityC", b =>
                 {
-                    b.HasOne("BulkExtensionsIssue354.Model.EntityA", "EntityA")
+                    b.HasOne("BulkExtensionsIssue354.Models.EntityA", "EntityA")
                         .WithMany()
                         .HasForeignKey("EntityAId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BulkExtensionsIssue354.Model.IdC", "IdC")
+                    b.HasOne("BulkExtensionsIssue354.Models.IdC", "IdC")
                         .WithMany("EntityCs")
                         .HasForeignKey("Id")
                         .IsRequired();
 
-                    b.HasOne("BulkExtensionsIssue354.Model.EntityB", "EntityB")
+                    b.HasOne("BulkExtensionsIssue354.Models.EntityB", "EntityB")
                         .WithMany("EntityCs")
                         .HasForeignKey("EntityAId", "EntityBId")
                         .IsRequired();

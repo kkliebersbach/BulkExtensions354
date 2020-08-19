@@ -8,23 +8,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f93d032d-20fb-4b8e-9294-e50cbce13605" name="Default Changelist" comment="Create test case">
-      <change afterPath="$PROJECT_DIR$/.config/dotnet-tools.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.BulkExtensionsIssue354/.idea/contentModel.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.BulkExtensionsIssue354/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.BulkExtensionsIssue354/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.BulkExtensionsIssue354/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.BulkExtensionsIssue354/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.BulkExtensionsIssue354/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BulkExtensionsIssue354.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BulkExtensionsIssue354.sln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DbContext.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/EntityA.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/EntityB.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/EntityC.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/IdC.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+    <list default="true" id="f93d032d-20fb-4b8e-9294-e50cbce13605" name="Default Changelist" comment="Add migrations">
+      <change afterPath="$PROJECT_DIR$/Migrations/20200819060907_InitialCreate.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Migrations/20200819060907_InitialCreate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.BulkExtensionsIssue354/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BulkExtensionsIssue354/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.BulkExtensionsIssue354/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BulkExtensionsIssue354/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BulkExtensionsIssue354.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BulkExtensionsIssue354.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/20200819043001_InitialCreate.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/20200819043001_InitialCreate.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/DbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Migrations/DbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +28,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DbContext.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -41,11 +39,11 @@
         <option value="$PROJECT_DIR$/Model/EntityA.cs" />
         <option value="$PROJECT_DIR$/Model/EntityB.cs" />
         <option value="$PROJECT_DIR$/Model/IdC.cs" />
-        <option value="$PROJECT_DIR$/DbContext.cs" />
         <option value="$PROJECT_DIR$/Models/EntityA.cs" />
-        <option value="$PROJECT_DIR$/Models/EntityB.cs" />
         <option value="$PROJECT_DIR$/Models/EntityC.cs" />
         <option value="$PROJECT_DIR$/Models/IdC.cs" />
+        <option value="$PROJECT_DIR$/Models/EntityB.cs" />
+        <option value="$PROJECT_DIR$/DbContext.cs" />
         <option value="$PROJECT_DIR$/Program.cs" />
       </list>
     </option>
@@ -70,10 +68,13 @@
   </component>
   <component name="RunManager">
     <configuration name="BulkExtensionsIssue354" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/BulkExtensionsIssue354.dll" />
       <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bin/Debug/netcoreapp3.1" />
       <option name="PASS_PARENT_ENVS" value="1" />
+      <envs>
+        <env name="CONNECTION_STRING" value="Data Source=localhost;Database=issue354;Integrated Security=false;User ID=sa;Password=$MegaDrive$" />
+      </envs>
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
@@ -82,7 +83,7 @@
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
       <option name="PROJECT_KIND" value="DotNetCore" />
-      <option name="PROJECT_TFM" value="" />
+      <option name="PROJECT_TFM" value=".NETCoreApp,Version=v3.1" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -96,7 +97,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1597808033576</updated>
-      <workItem from="1597808040890" duration="4962000" />
+      <workItem from="1597808040890" duration="8760000" />
     </task>
     <task id="LOCAL-00001" summary="Create test case">
       <created>1597812922063</created>
@@ -105,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597812922063</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add migrations">
+      <created>1597813090333</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1597813090333</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,25 +136,34 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Create test case" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create test case" />
+    <MESSAGE value="Add migrations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add migrations" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1280" height="150" key="GridCell.Tab.0.bottom" timestamp="1597812628725">
+    <state x="102" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597817400640">
       <screen x="0" y="27" width="1280" height="649" />
     </state>
-    <state width="1280" height="150" key="GridCell.Tab.0.bottom/0.27.1280.649/1280.0.1280.720@0.27.1280.649" timestamp="1597812628725" />
-    <state width="1280" height="150" key="GridCell.Tab.0.center" timestamp="1597812628725">
+    <state x="102" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1280.649/1280.0.1280.720@0.27.1280.649" timestamp="1597817400640" />
+    <state x="484" y="76" width="663" height="528" key="EnvironmentVariablesDialog" timestamp="1597817399324">
       <screen x="0" y="27" width="1280" height="649" />
     </state>
-    <state width="1280" height="150" key="GridCell.Tab.0.center/0.27.1280.649/1280.0.1280.720@0.27.1280.649" timestamp="1597812628725" />
-    <state width="1280" height="150" key="GridCell.Tab.0.left" timestamp="1597812628725">
+    <state x="484" y="76" width="663" height="528" key="EnvironmentVariablesDialog/0.27.1280.649/1280.0.1280.720@0.27.1280.649" timestamp="1597817399324" />
+    <state width="1280" height="150" key="GridCell.Tab.0.bottom" timestamp="1597817897134">
       <screen x="0" y="27" width="1280" height="649" />
     </state>
-    <state width="1280" height="150" key="GridCell.Tab.0.left/0.27.1280.649/1280.0.1280.720@0.27.1280.649" timestamp="1597812628725" />
-    <state width="1280" height="150" key="GridCell.Tab.0.right" timestamp="1597812628725">
+    <state width="1280" height="150" key="GridCell.Tab.0.bottom/0.27.1280.649/1280.0.1280.720@0.27.1280.649" timestamp="1597817897134" />
+    <state width="1280" height="150" key="GridCell.Tab.0.center" timestamp="1597817897134">
       <screen x="0" y="27" width="1280" height="649" />
     </state>
-    <state width="1280" height="150" key="GridCell.Tab.0.right/0.27.1280.649/1280.0.1280.720@0.27.1280.649" timestamp="1597812628725" />
+    <state width="1280" height="150" key="GridCell.Tab.0.center/0.27.1280.649/1280.0.1280.720@0.27.1280.649" timestamp="1597817897134" />
+    <state width="1280" height="150" key="GridCell.Tab.0.left" timestamp="1597817897134">
+      <screen x="0" y="27" width="1280" height="649" />
+    </state>
+    <state width="1280" height="150" key="GridCell.Tab.0.left/0.27.1280.649/1280.0.1280.720@0.27.1280.649" timestamp="1597817897134" />
+    <state width="1280" height="150" key="GridCell.Tab.0.right" timestamp="1597817897134">
+      <screen x="0" y="27" width="1280" height="649" />
+    </state>
+    <state width="1280" height="150" key="GridCell.Tab.0.right/0.27.1280.649/1280.0.1280.720@0.27.1280.649" timestamp="1597817897134" />
     <state x="238" y="74" width="800" height="568" key="Vcs.Push.Dialog.v2" timestamp="1597813002190">
       <screen x="0" y="27" width="1280" height="649" />
     </state>

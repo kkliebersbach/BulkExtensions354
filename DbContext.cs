@@ -1,3 +1,4 @@
+using System;
 using BulkExtensionsIssue354.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,7 +13,8 @@ namespace BulkExtensionsIssue354
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=issue354.db");
+            var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING") ?? throw new NullReferenceException();
+            optionsBuilder.UseSqlServer(connectionString);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -25,6 +27,9 @@ namespace BulkExtensionsIssue354
             modelBuilder.Entity<EntityB>(entity =>
             {
                 entity.HasKey(e => new {e.EntityAId, e.Id});
+
+                entity.Property(e => e.Id)
+                    .ValueGeneratedOnAdd();
 
                 entity.HasOne(d => d.EntityA)
                     .WithMany(p => p.EntityBs)

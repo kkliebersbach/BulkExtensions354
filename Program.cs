@@ -9,6 +9,13 @@ namespace BulkExtensionsIssue354
 {
     class Program
     {
+        static readonly BulkConfig BulkConfig = new BulkConfig
+        {
+            CalculateStats = true,
+            SetOutputIdentity = true,
+            PreserveInsertOrder = true
+        };
+        
         static void Main(string[] args)
         {
             Console.WriteLine(" --- Issue #354 EFCore.BulkExtensions --- ");
@@ -30,7 +37,16 @@ namespace BulkExtensionsIssue354
             db.IdCs.AddRange(idCs);
             db.SaveChanges();
             
-            Console.WriteLine(" - Bulk inserting data...");
+            Console.WriteLine(" - Bulk inserting data... try #1");
+            BulkInsertData(db);
+            Console.WriteLine(" - Bulk inserting data... try #2");
+            BulkInsertData(db); // TODO: ERROR OCCURS HERE
+            Console.WriteLine(" - Bulk inserting data... try #3");
+            BulkInsertData(db);
+        }
+
+        static void BulkInsertData(DbContext db)
+        {
             var entityAs = new List<EntityA>
             {
                 new EntityA("Sample 1"),
@@ -60,14 +76,8 @@ namespace BulkExtensionsIssue354
                 new EntityC(11),
                 new EntityC(12)
             };
-            var bulkConfig = new BulkConfig
-            {
-                CalculateStats = true,
-                SetOutputIdentity = true,
-                PreserveInsertOrder = true
-            };
             
-            db.BulkInsert(entityAs, bulkConfig);
+            db.BulkInsert(entityAs, BulkConfig);
             Console.WriteLine(" - Inserted EntityAs.");
             for (var i = 0; i < entityAs.Count; i++)
             {
@@ -76,7 +86,7 @@ namespace BulkExtensionsIssue354
             // Shuffle these to check the preserved insert order
             entityBs = entityBs.OrderBy(_ => Guid.NewGuid()).ToList();
             
-            db.BulkInsert(entityBs, bulkConfig);
+            db.BulkInsert(entityBs, BulkConfig);
             Console.WriteLine(" - Inserted EntityBs.");
             for (var i = 0; i < entityBs.Count; i++)
             {
@@ -86,11 +96,14 @@ namespace BulkExtensionsIssue354
                 entityCs[i * 3].EntityBId = entityBs[i].Id;
                 entityCs[i * 3 + 1].EntityBId = entityBs[i].Id;
                 entityCs[i * 3 + 2].EntityBId = entityBs[i].Id;
+                entityCs[i * 3].Id = 1;
+                entityCs[i * 3 + 1].Id = 2;
+                entityCs[i * 3 + 2].Id = 3;
             }
             // Shuffle these to check the preserved insert order
             entityCs = entityCs.OrderBy(_ => Guid.NewGuid()).ToList();
             
-            db.BulkInsert(entityCs, bulkConfig);
+            db.BulkInsert(entityCs, BulkConfig);
             Console.WriteLine(" - Inserted EntityCs.");
         }
     }
