@@ -81,12 +81,14 @@ namespace BulkExtensionsIssue354
             Console.WriteLine(" - Inserted EntityAs.");
             for (var i = 0; i < entityAs.Count; i++)
             {
+                entityBs[i].Id = -entityAs.Count + i;
                 entityBs[i].EntityAId = entityAs[i].Id;
             }
             // Shuffle these to check the preserved insert order
             entityBs = entityBs.OrderBy(_ => Guid.NewGuid()).ToList();
             
             db.BulkInsert(entityBs, BulkConfig);
+            db.BulkRead(entityBs, new BulkConfig { UpdateByProperties = new List<string> { nameof(EntityB.EntityAId) }});
             Console.WriteLine(" - Inserted EntityBs.");
             for (var i = 0; i < entityBs.Count; i++)
             {
